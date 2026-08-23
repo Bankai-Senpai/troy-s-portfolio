@@ -1,4 +1,5 @@
 import './styles.css';
+import { initAdmin } from './admin.js';
 
 const profile = {
   name: 'Troy Sacote',
@@ -129,4 +130,6 @@ function addMessage(text,type){ const item=document.createElement('div'); item.c
 document.querySelectorAll('[data-question]').forEach((b)=>b.addEventListener('click',()=>{ const q=b.dataset.question; addMessage(q,'user'); setTimeout(()=>addMessage(answer(q),'bot'), reducedMotion?80:400); })); document.querySelector('#chat-form').addEventListener('submit',(e)=>{e.preventDefault(); const input=document.querySelector('#chat-input'), q=input.value.trim(); if(!q)return; addMessage(q,'user'); input.value=''; setTimeout(()=>addMessage(answer(q),'bot'), reducedMotion?80:400); });
 
 const menuButton=document.querySelector('.menu-button'), nav=document.querySelector('.nav-links'); menuButton.addEventListener('click',()=>{ const open=nav.classList.toggle('open'); menuButton.setAttribute('aria-expanded',String(open)); }); nav.querySelectorAll('a').forEach((a)=>a.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));
+
+initAdmin();
 
